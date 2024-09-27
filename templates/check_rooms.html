@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Rooms</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body style="background-image: url('/static/img/Screenshot\ 2024-09-24\ 225324.png'); background-size: cover; background-position: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="container" style="background-color: rgba(3, 3, 3, 0.8); padding: 20px; border-radius: 10px; width: 80%; text-align: center;">
+        <h1>Select Room Type</h1>
+        <form action="{{ url_for('check_rooms') }}" method="POST" style="margin-bottom: 20px;">
+            <label for="room_type">Room Type:</label>
+            <select name="room_type" id="room_type" required style="padding: 10px; width: 200px; margin: 10px 0;">
+                <option value="standard">Standard Room</option>
+                <option value="luxury">Luxury Room</option>
+                <option value="suite">Suite Room</option>
+            </select><br>
+            <input type="submit" value="Proceed to Book" style="padding: 10px 20px; background-color: gold; border: none; color: black; cursor: pointer; margin-top: 20px;">
+        </form>
+
+        <div class="room-options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;">
+            <div>
+                <img src="/static/img/Standard Room.jpg" alt="Standard Room" style="width: 100%; height: 100%; border-radius: 5px;">
+                <p>Standard Room</p>
+            </div>
+            <div>
+                <img src="/static/img/luxury room.jpg" alt="Luxury Room" style="width: 100%; height: 100%; border-radius: 5px;">
+                <p>Luxury Room</p>
+            </div>
+            <div>
+                <img src="/static/img/suite room.jpg" alt="Suite Room" style="width: 100%; height: 100%; border-radius: 5px;">
+                <p>Suite Room</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

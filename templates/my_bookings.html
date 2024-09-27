@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+</head>
+<body style="background-image: url('/static/img/Screenshot\ 2024-09-24\ 213227.png'); background-size: cover; background-repeat: no-repeat; height: 100vh; margin: 0; display: flex; justify-content: center; align-items: center; text-align: center;">
+    <div style="width: 100%; max-width: 800px; background-color: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px;">
+        <h1>My Bookings</h1>
+        {% if bookings %}
+            <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+                <tr>
+                    <th>Room Type</th>
+                    <th>Number of People</th>
+                    <th>Check-In</th>
+                    <th>Check-Out</th>
+                    <th>Special Requests</th>
+                    <th>Payment Mode</th>
+                    <th>Total Price</th>
+                </tr>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.room_type }}</td>
+                        <td>{{ booking.num_people }}</td>
+                        <td>{{ booking.check_in }}</td>
+                        <td>{{ booking.check_out }}</td>
+                        <td>{{ booking.special_requests }}</td>
+                        <td>{{ booking.payment_mode }}</td>
+                        <td>{{ booking.total_price }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>You have no bookings yet.</p>
+        {% endif %}
+        <a href="{{ url_for('home') }}" style="margin-top: 20px; display: inline-block;">Return Home</a>
+    </div>
+</body>
+</html>

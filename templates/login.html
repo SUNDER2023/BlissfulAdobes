@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-image: url('/static/img/Screenshot\ 2024-09-24\ 213227.png'); /* Add your background image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            color: white; /* Optional: Change to white for better contrast */
+        }
+        form {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background for form */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"] {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: gold;
+            color: black;
+            cursor: pointer;
+        }
+        p {
+            margin-top: 20px;
+        }
+        a {
+            color: gold; /* Makes the Register link stand out */
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="{{ url_for('login') }}" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br>
+
+        <input type="submit" value="Login">
+    </form>
+    <p><a href="{{ url_for('register') }}">Register</a></p>
+</body>
+</html>

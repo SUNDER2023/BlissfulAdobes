@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <style>
+        /* Removed internal background image styles */
+    </style>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        function calculateTotalPrice() {
+            let num_people = document.getElementById('num_people').value;
+            let check_in = new Date(document.getElementById('check_in').value);
+            let check_out = new Date(document.getElementById('check_out').value);
+            let pricePerAdult = {{ price_per_adult }};
+            
+            let diffTime = Math.abs(check_out - check_in);
+            let days = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+            if (!isNaN(num_people) && days > 0) {
+                let total_price = pricePerAdult[num_people] * days;
+                document.getElementById('total_price').value = total_price;
+            } else {
+                document.getElementById('total_price').value = '0';
+            }
+        }
+    </script>
+</head>
+<body style="background-image: url('/static/img/darknight.jpeg'); background-size: cover; height: 100vh; margin: 0;">
+    <h1>Booking a {{ room_type }} Room</h1>
+    <form action="" method="POST">
+        <label for="num_people">Number of People:</label>
+        <select id="num_people" name="num_people" onchange="calculateTotalPrice()" required>
+            <option value="1">1 Adult</option>
+            <option value="2">2 Adults</option>
+            <option value="3">3 Adults</option>
+            <option value="4">4 Adults</option>
+        </select><br>
+
+        <label for="check_in">Check-In Date:</label>
+        <input type="date" id="check_in" name="check_in" onchange="calculateTotalPrice()" required><br>
+
+        <label for="check_out">Check-Out Date:</label>
+        <input type="date" id="check_out" name="check_out" onchange="calculateTotalPrice()" required><br>
+
+        <label for="special_requests">Special Requests:</label>
+        <textarea id="special_requests" name="special_requests"></textarea><br>
+
+        <label for="payment_mode">Payment Mode:</label>
+        <select id="payment_mode" name="payment_mode" required>
+            <option value="credit_card">Credit Card</option>
+            <option value="debit_card">Debit Card</option>
+            <option value="cash">Cash</option>
+        </select><br>
+
+        <label for="total_price">Total Price:</label>
+        <input type="text" id="total_price" name="total_price" readonly><br><br>
+
+        <input type="submit" value="Confirm Booking">
+    </form>
+</body>
+</html>
