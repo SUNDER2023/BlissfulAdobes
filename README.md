@@ -1,0 +1,2 @@
+**Project Description**
+The Blissful Abodes project develops a scalable hotel booking platform that enables seamless reservations for various room types, including Standard, Luxury, and Suites. Built with Flask for backend development and hosted on AWS EC2 with Amazon RDS for database management, this cloud-native solution ensures high availability and efficient user interactions. The platform simplifies room booking, customer management, and payment processing, showcasing a robust infrastructure tailored for the hospitality industry.
